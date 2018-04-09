@@ -48,7 +48,7 @@ class Map<K,V>{
 	//finds the index for the key
 	private int getArrayIndex (K key){
 		int hashCode = key.hashCode();
-		int index = hashCode % arraySize;
+		int index = Math.abs(hashCode % arraySize);
 		return index;
 	}
 
