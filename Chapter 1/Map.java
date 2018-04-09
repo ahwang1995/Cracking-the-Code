@@ -129,6 +129,8 @@ class Map<K,V>{
 		linkedArray.set(arrayIndex, newNode);
 
 		//if load factor goes beyond threshold then double the hash table size
+
+		//Not sure why this is needed since ArrayLists automatically resize
 		if((1.0*size)/arraySize >= 0.7){
 			ArrayList<Node<K,V>> temp = linkedArray;
 			linkedArray = new ArrayList<>();
