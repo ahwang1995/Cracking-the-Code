@@ -1,10 +1,12 @@
 class Node:
 
+	#constructor
 	def __init__(self,data):
 		self.data = data
 		self.next = None
 		self.prev = None
 
+	#add a node to the list (implemented as a doubly linked list)
 	def appendToTail(self,data):
 		node = Node(data)
 		n = self
@@ -13,6 +15,7 @@ class Node:
 		n.next = node
 		node.prev = n
 
+	#delete a node from the list
 	def deleteNode(head,d):
 		n = head
 		if (n.data == d): return head.next

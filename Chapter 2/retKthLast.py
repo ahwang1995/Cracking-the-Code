@@ -1,4 +1,4 @@
-
+#return the kth to last node in a linked list by using a runner node
 def retKthLast(head,k):
 	n1 = head
 	n2 = head

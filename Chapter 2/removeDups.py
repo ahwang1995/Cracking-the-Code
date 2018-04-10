@@ -1,5 +1,5 @@
 from NodeSLL import Node
-
+#remove duplicate nodes in a linked list
 def removeDups(head):
 	visited = list()
 	n = head
