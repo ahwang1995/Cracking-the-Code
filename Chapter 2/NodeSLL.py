@@ -16,16 +16,17 @@ class Node:
 		node.prev = n
 
 	#delete a node from the list
-	def deleteNode(head,d):
-		n = head
-		if (n.data == d): return head.next
+	def deleteNode(self,d):
+		h = self
+		n = self
+		if (n.data == d): return h.next
 
 		while(n.next != None):
 			if(n.next.data == d):
 				n.next.next.prev = n
 				n.next = n.next.next
-				return head
+				return h
 			n = n.next
-		return head
+		return h
 asdf = Node(3)
 asdf.appendToTail(2)
