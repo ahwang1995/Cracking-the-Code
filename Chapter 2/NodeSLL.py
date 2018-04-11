@@ -5,14 +5,13 @@ class Node:
 		self.data = data
 		self.next = next
 
+
 	#add a node to the list
 	def appendToTail(self,data):
 		node = Node(data)
 		n = self
-		print("before")
 		while(n.next != None):
 			n = n.next
-		print("after")
 		n.next = node
 
 	#delete a node from the list
@@ -28,5 +27,15 @@ class Node:
 				return h
 			n = n.next
 		return h
+
+	#find the length of the linked list
+	def listLength(self):
+		n = self
+		length = 1
+		while(n.next != None):
+			length = length + 1
+			n = n.next
+			return length
+
 #asdf = Node(3)
 #asdf.appendToTail(2)
