@@ -1,7 +1,8 @@
 from NodeSLL import Node
 #make it so that all notes less than x come before
 #all nodes greater or equal to x
-def partition(head,x):
+#this is done by moving all occurances of x to the tail and anything smaller to the head
+"""def partition(head,x):
 	n = head
 	#check to see if x is in the list, if it is, move it to the tail
 	while(n.next != None):
@@ -30,7 +31,26 @@ def partition(head,x):
 			head = newNode
 			continue
 		n = n.next
-	return head
+	return head"""
+
+#Do this with linked Lists
+def partition(head,x):
+	curr = head
+	i = 0
+	while(curr.next != None):
+		nextN = curr.next
+		if curr.data < x :
+			curr.next = head
+			head = curr
+		print nextN.data
+		curr = nextN
+		print nextN.data
+		#if i == 10: break
+		i = i + 1
+		print i
+
+
+
 
 headNode = Node(3)
 headNode.appendToTail(7)
@@ -40,7 +60,7 @@ headNode.appendToTail(9)
 headNode.appendToTail(6)
 headNode.appendToTail(11)
 
-headNode = partition(headNode,7)
+partition(headNode,7)
 n = headNode
 while(n.next != None):
 	#print(n.data)
