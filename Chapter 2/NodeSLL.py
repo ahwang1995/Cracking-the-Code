@@ -1,16 +1,18 @@
 class Node:
 
 	#constructor
-	def __init__(self,data):
+	def __init__(self,data=None,next=None):
 		self.data = data
-		self.next = None
+		self.next = next
 
 	#add a node to the list
 	def appendToTail(self,data):
 		node = Node(data)
 		n = self
+		print("before")
 		while(n.next != None):
 			n = n.next
+		print("after")
 		n.next = node
 
 	#delete a node from the list

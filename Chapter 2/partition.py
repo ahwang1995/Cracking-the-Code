@@ -33,21 +33,23 @@ from NodeSLL import Node
 		n = n.next
 	return head"""
 
-#Do this with linked Lists
+#with linked list package, can do this without creating a new list
 def partition(head,x):
+	newList = None
 	curr = head
-	i = 0
 	while(curr.next != None):
 		nextN = curr.next
 		if curr.data < x :
-			curr.next = head
-			head = curr
-		print nextN.data
+			newList = Node(curr.data,newList)
+		else:
+			newList.appendToTail(curr.data)
+
 		curr = nextN
-		print nextN.data
-		#if i == 10: break
-		i = i + 1
-		print i
+	if curr.data < x :
+			newList = Node(curr.data,newList)
+	else:
+		newList.appendToTail(curr.data)
+	return newList
 
 
 
@@ -59,11 +61,14 @@ headNode.appendToTail(2)
 headNode.appendToTail(9)
 headNode.appendToTail(6)
 headNode.appendToTail(11)
+headNode.appendToTail(1)
 
-partition(headNode,7)
+
+headNode = partition(headNode,7)
 n = headNode
 while(n.next != None):
-	#print(n.data)
+	print(n.data)
 	n = n.next
+print(n.data)
 
 	
