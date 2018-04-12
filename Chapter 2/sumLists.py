@@ -26,8 +26,6 @@ def sumListsRev(head1,head2):
 	factor = .1
 	head1range = head1.listLength()
 	head2range = head2.listLength()
-	print head1range
-	print head2range
 	#use length to know the facter for first index
 	for x in range(0,head1range):
 		factor = factor*10
