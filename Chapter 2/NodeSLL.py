@@ -35,7 +35,7 @@ class Node:
 		while(n.next != None):
 			length = length + 1
 			n = n.next
-			return length
+		return length
 
 #asdf = Node(3)
 #asdf.appendToTail(2)
