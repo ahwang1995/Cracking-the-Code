@@ -1,15 +1,15 @@
 from Stack import Stack
 class stackOfPlates:
-	cap = 4
-	def _init_(self):
+	def __init__(self,cap):
 		self.plates = []
+		self.cap = 4
 
 	def isEmpty(self):
 		return self.plates == []
 
 	def push(self, item):
 		p = Stack()
-		if ((self.isEmpty()) or (self.plates[len(self.plates)-1].size() == cap)):
+		if ((self.isEmpty()) or (self.plates[len(self.plates)-1].size() == self.cap)):
 			p.push(item)
 			self.plates.append(p)
 		else:
@@ -26,6 +26,15 @@ class stackOfPlates:
 	def size(self):
 		return len(self.plates)
 
-s = stackOfPlates()
+s = stackOfPlates(4)
 s.push(3)
+s.push(2)
+s.push(1)
+s.push(4)
+s.push(5)
+s.push(7)
+while not s.isEmpty():
+	a = s.pop()
+	print(a)
+
 
