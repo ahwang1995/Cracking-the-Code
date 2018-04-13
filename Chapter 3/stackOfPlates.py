@@ -9,19 +9,19 @@ class stackOfPlates:
 
 	def push(self, item):
 		p = Stack()
-		if (self.plates == []) or (self.plates[0].size() == cap):
+		if ((self.isEmpty()) or (self.plates[len(self.plates)-1].size() == cap)):
 			p.push(item)
         	self.plates.append(p)
-        else:
-        	self.plates[0].push(item)
+		else:
+    		self.plates[len(self.plates)-1].push(item)
 
-    def pop(self):
-    	for x in self.plates:
-    	if not x.isEmpty():
-    		return self.plates[0].pop()
+	def pop(self):
+    	temp = self.plates[len(self.plates)-1].pop()
+    	if(self.plates[len(self.plates)-1].isEmpty()): self.plates.pop()
+    	return temp
     	
     def peek(self):
-    	return self.plates[0].peek()
+    	return self.plates[len(self.plates)-1].peek()
 
     def size(self):
     	return len(self.plates)
@@ -32,4 +32,3 @@ s.push(5)
 s.push(1)
 s.push(5)
 s.push(2)
-print(s)
