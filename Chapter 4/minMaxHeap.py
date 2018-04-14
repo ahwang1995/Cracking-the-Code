@@ -3,9 +3,9 @@ from Node import Node
 #the left and right children are at 2i+1 and 2i+2 respectively
 class minMaxHeap:
 	#constructor with parameter specifying whether it is a min or max heap
-	def __init__(self,MinOrMax,heap=None):
+	def __init__(self,minOrMax,heap=None):
 		self.heap = []
-		self.MinOrMax = MinOrMax
+		self.minOrMax = minOrMax
 
 	#check if heap is empty
 	def isEmpty(self):
@@ -22,26 +22,42 @@ class minMaxHeap:
 		if self.size() == 0:
 			self.heap.append(data)
 
-		#check if it is a min or max heap then bubble up
-		if minOrMax == "max":
+		#check if it is a min or max heap insert and bubble up
+		elif self.minOrMax == "max":
 			self.heap.append(data)
-			while (heap[curr] > heap[(curr-1)/2]):
+			while (self.heap[curr] > self.heap[(curr-1)/2]):
 				tempVal = heap[curr]
-				heap[curr] = heap[(curr-1)/2]
-				heap[(curr-1)/2] = tempVal
+				self.heap[curr] = self.heap[(curr-1)/2]
+				self.heap[(curr-1)/2] = tempVal
 				curr = (curr-1)/2
 			return True
 
-		elif minOrMax == "min":
+		elif self.minOrMax == "min":
 			self.heap.append(data)
-			while (heap[curr] < heap[(curr-1)/2]):
-				tempVal = heap[curr]
-				heap[curr] = heap[(curr-1)/2]
-				heap[(curr-1)/2] = tempVal
+			#print self.heap[curr]
+			#print self.heap[(curr-1)/2]
+			while (self.heap[curr] < self.heap[(curr-1)/2]):
+				print("enteredloop")
+				tempVal = self.heap[curr]
+				print tempVal
+				self.heap[curr] = self.heap[(curr-1)/2]
+				print self.heap[curr]
+				self.heap[(curr-1)/2] = tempVal
+				print self.heap[(curr-1)/2]
 				curr = (curr-1)/2
+				#if at root node then break
+				if curr < 1: break
 			return True
 
 		return False
 
 	def extractMinMax(self,data):
 		pass
+h = minMaxHeap("min")
+h.insert(4)
+h.insert(7)
+h.insert(3)
+h.insert(1)
+h.insert(5)
+h.insert(2)
+print h.heap
