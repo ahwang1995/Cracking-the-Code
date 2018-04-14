@@ -36,6 +36,19 @@ class animalShelter:
 			self.dogs.dequeue()
 			dog = self.dogs.dequeue()
 			return dog
+
+	def dequeueDog(self):
+		if(self.dogs.isEmpty()):
+			return False
+		self.dogs.dequeue()
+		dog = self.dogs.dequeue()
+		return dog
+	def dequeueCat(self):
+		if(self.cats.isEmpty()):
+			return False
+		self.cats.dequeue()
+		cat = self.cats.dequeue()
+		return cat
 #test
 shelter = animalShelter()
 shelter.enqueue(1,"cat")
@@ -44,6 +57,6 @@ shelter.enqueue(3,"dog")
 shelter.enqueue(4,"cat")
 shelter.enqueue(5,"dog")
 shelter.enqueue(6,"cat")
-print (shelter.dequeueAny())
+print (shelter.dequeueDog())
 print (shelter.dequeueAny())
 print (shelter.dequeueAny())
