@@ -1,3 +1,6 @@
+
+from Queue import Queue
+import copy
 class Node:
 	def __init__(self,data=None):
 		self.data = data
@@ -12,7 +15,20 @@ class Node:
 			if(c.visited == False):
 				self.DFS(c)
 
-	def BFS
+	def BFS(self,root):
+		q = Queue()
+		root.visited = True
+		q.enqueue(root)
+
+		while(not q.isEmpty()):
+			r = q.dequeue()
+			print(r.data)
+			for c in r.children:
+				if(c.visited == False):
+					c.visited = True
+					q.enqueue(c)
+
+
 #testing
 a = Node('a')
 b = Node('b')
@@ -30,4 +46,5 @@ c.children.append(f)
 c.children.append(g)
 d.children.append(h)
 
-a.DFS(a)
+ac = copy.copy(a)
+ac.BFS(ac)
