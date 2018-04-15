@@ -34,16 +34,10 @@ class minMaxHeap:
 
 		elif self.minOrMax == "min":
 			self.heap.append(data)
-			#print self.heap[curr]
-			#print self.heap[(curr-1)/2]
 			while (self.heap[curr] < self.heap[(curr-1)/2]):
-				print("enteredloop")
 				tempVal = self.heap[curr]
-				print tempVal
 				self.heap[curr] = self.heap[(curr-1)/2]
-				print self.heap[curr]
 				self.heap[(curr-1)/2] = tempVal
-				print self.heap[(curr-1)/2]
 				curr = (curr-1)/2
 				#if at root node then break
 				if curr < 1: break
@@ -51,8 +45,36 @@ class minMaxHeap:
 
 		return False
 
+	#remove top element and resort heap
 	def extractMinMax(self,data):
-		pass
+		curr = 0
+		#check if empty
+		if self.size() == 0:
+			return False
+
+		#store return value
+		minMax = heap[0]
+		elif self.minOrMax == "max":
+			self.heap[0] = self.heap.pop(heap[heap.size()-1])
+			size = self.heap.size()
+			#edge cases
+			if size <= 1:
+				return True
+			if size == 2:
+				if self.heap[curr] < self.heap[curr+1]:
+					tempVal = self.heap[curr]
+					self.heap[curr] = self.heap[curr+1]
+					self.heap[curr+1] = tempVal
+				return True
+			#bubble down
+			while (self.heap[curr] < self.heap[curr+1] or self.heap[curr] < self.heap[curr+2]):
+				if self.heap[curr+1] < self.heap[curr+2]:
+					tempVal = self.heap[curr]
+					self.heap[curr] = self.heap[curr+2]
+					self.heap[curr+2] = self.heap[curr]
+					curr = curr + 2
+					size = size - 2
+
 h = minMaxHeap("min")
 h.insert(4)
 h.insert(7)
