@@ -26,10 +26,11 @@ class minMaxHeap:
 		elif self.minOrMax == "max":
 			self.heap.append(data)
 			while (self.heap[curr] > self.heap[(curr-1)/2]):
-				tempVal = heap[curr]
+				tempVal = self.heap[curr]
 				self.heap[curr] = self.heap[(curr-1)/2]
 				self.heap[(curr-1)/2] = tempVal
 				curr = (curr-1)/2
+				if curr < 1: break
 			return True
 
 		elif self.minOrMax == "min":
@@ -46,40 +47,61 @@ class minMaxHeap:
 		return False
 
 	#remove top element and resort heap
-	def extractMinMax(self,data):
+	def extractMinMax(self):
 		curr = 0
 		#check if empty
 		if self.size() == 0:
 			return False
 
 		#store return value
-		minMax = heap[0]
-		elif self.minOrMax == "max":
-			self.heap[0] = self.heap.pop(heap[heap.size()-1])
-			size = self.heap.size()
-			#edge cases
-			if size <= 1:
-				return True
-			if size == 2:
-				if self.heap[curr] < self.heap[curr+1]:
-					tempVal = self.heap[curr]
-					self.heap[curr] = self.heap[curr+1]
-					self.heap[curr+1] = tempVal
-				return True
-			#bubble down
-			while (self.heap[curr] < self.heap[curr+1] or self.heap[curr] < self.heap[curr+2]):
-				if self.heap[curr+1] < self.heap[curr+2]:
-					tempVal = self.heap[curr]
-					self.heap[curr] = self.heap[curr+2]
-					self.heap[curr+2] = self.heap[curr]
-					curr = curr + 2
-					size = size - 2
+		minMax = self.heap[0]
+		self.heap[0] = self.heap.pop(self.heap[self.size()-1])
+		#bubble down
+		self.trickleDown(0)
+		return minMax
 
-h = minMaxHeap("min")
+	#trickle down helper method
+	def trickleDown(self,index,):
+		c1Index = index*2 + 1
+		c2Index = index*2 + 2
+
+		if c1Index >= self.size():
+			return
+
+		parent = self.heap[index]
+		child1 = self.heap[c1Index]
+		child2 = child1
+
+		if c2Index < self.size():
+			child2 = self.heap[c2Index]
+
+		if self.minOrMax == "max":
+			if child1 >= child2 and child1 > parent:
+				self.heap[c1Index] = parent
+				self.heap[index] = child1
+				self.trickleDown(c1Index)
+			if child2 > child1 and child2 > parent:
+				self.heap[c2Index] = parent
+				self.heap[index] = child2
+				self.trickleDown(c2Index)
+		
+		if self.minOrMax == "min":
+			if child1 <= child2 and child1 < parent:
+				self.heap[c1Index] = parent
+				self.heap[index] = child1
+				self.trickleDown(c1Index)
+			if child2 < child1 and child2 < parent:
+				self.heap[c2Index] = parent
+				self.heap[index] = child2
+				self.trickleDown(c2Index)
+		return
+
+h = minMaxHeap("max")
 h.insert(4)
 h.insert(7)
 h.insert(3)
 h.insert(1)
 h.insert(5)
 h.insert(2)
+print(h.extractMinMax())
 print h.heap
