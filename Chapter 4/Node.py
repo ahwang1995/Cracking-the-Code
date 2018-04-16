@@ -3,23 +3,23 @@ class Node:
 		self.data = data
 		self.left = None
 		self.right = None
-
+		self.depth = None
 	#implement inorder
-	def inOrder(node):
+	def inOrder(self,node):
 		if node != None:
 			self.inOrder(node.left)
 			print (node.data)
 			self.inOrder(node.right)
 
 	#implement preorder
-	def preOrder(node):
+	def preOrder(self,node):
 		if(node != None):
 			print(node.data)
 			self.preOrder(node.left)
 			self.preOrder(node.right)
 
 	#implement postorder
-	def postOrder(node):
+	def postOrder(self,node):
 		if(node != None):
 			self.postOrder(node.left)
 			self.postOrder(node.right)

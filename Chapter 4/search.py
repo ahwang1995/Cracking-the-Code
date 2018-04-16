@@ -30,7 +30,7 @@ class Node:
 
 
 #testing
-a = Node('a')
+"""a = Node('a')
 b = Node('b')
 c = Node('c')
 d = Node('d')
@@ -47,4 +47,4 @@ c.children.append(g)
 d.children.append(h)
 
 ac = copy.copy(a)
-ac.BFS(ac)
+ac.BFS(ac)"""
