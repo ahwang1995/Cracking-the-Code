@@ -1,7 +1,4 @@
-import copy
-from search import Node
-from collections import defaultdict
-from Stack import Stack
+from collections import deque
 #directedgraph class to implement buildOrder
 class directedGraph:
 	#use a hashtable for the graph
@@ -22,29 +19,26 @@ class directedGraph:
 			self.proj[d[1]].children.append(self.proj[d[0]])
 
 	#depth first search
-	def DFS(self,root,vals):
-		if (root == None): return
-		if(root.visit == "visted"): return
-		root.visit = "tempvisit"
-		for c in root.children:
-			print c.data
-			if self.proj[c.data].visit == "tempvisit": return False
-			if(self.proj[c.data].visit == "unvisited"):
-				self.DFS(self.proj[c.data],vals)
-			self.proj[c.data].visit = "visited"
-			vals.append
-			print("asdf")
-
-		return True
+	def DFSModified(self,root,projs,depends,temps,perms,vals):
+		if root in temps: return False
+		if root not in perms:
+			temps.append(root)
+			for d in depends:
+				if d[0] == root:
+					self.DFSModified(d[1],projs,depends,temps,perms,vals)
+			perms.append(root)
+			temps.remove(root)
+			vals.append(root)
 
 	def buildOrder(self,projects,dependencies):
-		self.addVerts(projects)
-		self.addEdges(dependencies)
-		foundVals = []
-		for n in self.proj:
-			if not self.DFS(self.proj[n],foundVals):
-				print (foundVals)
-				return False
+		tempMarks = []
+		permMarks = []
+		vals = deque()
+
+		for p in projects:
+			if p not in permMarks:
+				self.DFSModified(p,projects,dependencies,tempMarks,permMarks,vals)
+		return vals
 
 projs = ["a","b","c","d","e","f"]
 depends = [("a","d"),("f","b"),("b","d"),("f","a"),("d","c")]
