@@ -28,7 +28,7 @@ class directedGraph:
 					self.DFSModified(d[1],projs,depends,temps,perms,vals)
 			perms.append(root)
 			temps.remove(root)
-			vals.append(root)
+			vals.appendleft(root)
 
 	def buildOrder(self,projects,dependencies):
 		tempMarks = []
