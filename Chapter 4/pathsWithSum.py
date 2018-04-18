@@ -16,17 +16,20 @@ class pathsWithSum:
 	def countPaths(self,node,currTotal,total):
 		if node != None:      
 			if (currTotal + node.data == total):
-				self.count = self.count + 1 
-			self.countPaths(node.left,currTotal+node.data,total)
-			self.countPaths(node.left,currTotal+node.data,total)
+				self.count = self.count + 1
+			currTotal = currTotal + node.data
+			print node.data
+			print(currTotal)
+			self.countPaths(node.left,currTotal,total)
+			self.countPaths(node.right,currTotal,total)
 #test
 n = Node(1)
 n.left = Node(2)
 n.left.left = Node(3)
 n.left.right = Node(6)
 n.right = Node(3)
-n.left.left = Node(2)
-n.left.right = Node(6)
+n.right.left = Node(2)
+n.right.right = Node(6)
 
 ps = pathsWithSum()
 print (ps.pathSum(n,6))
