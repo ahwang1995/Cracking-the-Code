@@ -13,6 +13,14 @@ class powerSet:
 			for x in self.getSubset(initialSet[1:],newSet):
 				ret.append(x)
 			return ret
+
+	#iterative solution (muuuuch easier)
+	def getSubsetIter(self,initialSet):
+		ret = [[]]
+		for x in initialSet:
+			newSets = [subset + [x] for subset in ret]
+			ret.extend(newSets)
+		return ret
+
 ps = powerSet()
-print (ps.getSubset([1,2,3],[]))
-print sorted(ps.getSubset([1,2,3],[]))
+print (ps.getSubsetIter([1,2,3]))
