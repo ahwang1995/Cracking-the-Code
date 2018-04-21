@@ -4,27 +4,29 @@ from Stack import Stack
 #each tower is represented by a stack and larger discs cannot be set
 #on top of larger discs, only one disc can be moved at a time, and only the top can be moved
 class towersOfHanoi:
-	#recursive function to move discs from a to b using c
+	#recursive function to move discs
 	def moveDiscs(self,n,a,b,c):
 		#base case
-		if n == 1: return
+		if n == 1: 
+			c.push(a.pop())
+			return
 
 		#move rods 1 by 1 using recursion
-		self.moveDiscs(n-1,a,b,c)
+		self.moveDiscs(n-1,a,c,b)
 		if not a.isEmpty():
-			b.push(a.pop())
-		self.moveDiscs(n-1,c,b,a)
+			c.push(a.pop())
+		self.moveDiscs(n-1,b,a,c)
 
 a = Stack()
 b = Stack()
 c = Stack()
-a.push(1)
-a.push(2)
-a.push(3)
 a.push(4)
+a.push(3)
+a.push(2)
+a.push(1)
 n = a.size()
 toh = towersOfHanoi()
 toh.moveDiscs(n,a,b,c)
 
-while not b.isEmpty():
-	print(b.pop())
+while not c.isEmpty():
+	print(c.pop())
