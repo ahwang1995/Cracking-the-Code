@@ -1,9 +1,9 @@
 #fills the pixels in a matrix that is not cut off by other colors
-class color(ENUM):
+class color:
 	black = 1
 	white = 2
 	red = 3
-	yellow = 4
+	blue = 4
 	green = 5
 class paintFill:
 	#similar to dfs
