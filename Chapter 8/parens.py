@@ -1,4 +1,6 @@
 #print all valid parentheses combinations given n pairs
+#the basic idea is that a right parenthesis cannot be added unless there is a
+#left one before it
 class parens:
 	#builds combinations parenthesis
 	def parenCombs(self,n):
