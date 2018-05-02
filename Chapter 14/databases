@@ -34,4 +34,20 @@ Each apartment can have multiple tenants, and each tenant can have multiple apar
 		A Full Outer Join has the elements from Inner Join, with the non matching elemented also added with a NULL Value
 
 	5. What is Denormalization?
-		Denormalization is when redundant data is added to a database in order to avoid costly joins.
+		Denormalization is when redundant data is added to a database in order to avoid costly joins. In contrast, a normalized database avoids redundant data, so when something needs to be updated, it is only done in one place. 
+		Denormilization makes retreiving data simpler and faster while making inserts and updates more complicated.
+
+	6. Return the top 10% of students sorted by GPA.
+		DECLARE @GPACutOff float;
+		SET @GPACutOff = (SELECT min(GPA) as 'GPAMin' FROM(
+		SELECT TOP 10 PERCENT AVG(CourseEnrollment.Grade) AS GPA
+		FROM CourseEnrollment
+		GROUP BY CourseEnrollment.StudentID
+		ORDER BY desc) Grades)
+		
+		SELECT StudentName, GPA
+		FROM (SELECT AVG(CourseEnrollment.Grade) AS GPA,CourseEnrollment.StudentID
+			FROM CourseEnrollment
+			GROUP BY CourseEnrollment.StudentID
+			HAVING AVG(CourseEnrollment.Grade) >= @GPACutoff) Honors
+		INNER JOIN Students ON Honors.StudentID = Student.StudentID
