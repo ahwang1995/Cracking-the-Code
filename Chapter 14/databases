@@ -1,0 +1,37 @@
+SQl Review Questions
+
+Each apartment can have multiple tenants, and each tenant can have multiple apartments. Each apartment belongs to one building, and each building belongs to one complex.
+
+	1. Write an SQL Query to get a list of tenants who are renting more than one apartment
+		SELECT TenantName
+		FROM Tenants
+		INNER JOIN
+			(SELECT TENANT ID FROM AptTenants GROUP BY TenantID HAVING count(*) > 1) C
+		ON Tenants.TenantID = C.TenantID
+
+	2. Write a SQL query to get a list of all buildings and the number of open requests
+		SELECT BuildingName, ISNULL(Count,0) as 'Count'
+		FROM BUILDINGS
+		LEFT JOIN
+			(SELECT Apartments.BuildingID, count(*) as 'Count'
+			 FROM Requests INNER JOIN Apartments ON Requests.AptID = Apartments.AptID
+			 WHERE Requests.Status = 'Open'
+			 GROUP BY Apartments.BuildingID) ReqCounts
+		ON ReqCounts.BuildingID = Buildings.BuildingID
+
+	3. Building #11 is undergoing major rennovation, write a query to close all requests from apartments to this building
+		UPDATE Requests
+		Set Status = 'Closed'
+		WHERE AptID IN (SELECT AptID FROM Apartments WHERE BuildingID = 11)
+
+	4. What are the different types of joins? 
+		Joins are used one two different tables with a shared field in order to combine their data.
+		An Inner Join only combines elements which are in both tables
+		An Outer Join has elements which are not shared by the tables in addition to the ones from Inner Join
+		A Left Outer Join, or LEFT Join contains the elements from the left table, while the nonshared elements
+			in the right table are filled with NULL
+		A Right Outer Join, or RIGHT Join is the opposite of above
+		A Full Outer Join has the elements from Inner Join, with the non matching elemented also added with a NULL Value
+
+	5. What is Denormalization?
+		Denormalization is when redundant data is added to a database in order to avoid costly joins.
