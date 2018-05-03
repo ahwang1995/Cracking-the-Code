@@ -1,0 +1,12 @@
+Thread Review Questions
+
+1. What's the difference between a thread and a proccess?
+	A process is an instance of a program in which resources such as CPU time
+	and memory are allocated. Proccesses are excecuted in different address
+	spaces and do not have direct access to eachother's resources. In contrast
+	a thread is part of a proccess and shares it resources such as heap space while
+	still having it's own memory and registers. Due to the shared heap space, threads within
+	the same proccess have immediete access to changes in resources. Threads sare like a
+	paths in a proccess.
+
+2. 
