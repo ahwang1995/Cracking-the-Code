@@ -71,4 +71,62 @@ Virtual Functions
 		Bookshelf Bookshelf::operator+(Bookshelf &other){...}
 
 	Pointers and References
-		
+		format
+			Pointers
+				int * p = new int;
+				*p = 7;
+				int * q = p;
+				*p = 8;
+			References
+				//a reference does not have it's own memory, it modifies existing objects
+				int a = 5;
+				int & b = a;
+				b = 7;
+
+				//free standing reference
+				//allocates memory to store 12 and and makes b a reference to this
+				const int & b = 12;
+				//references cannot be reassigned to other memory and can't be null
+
+			Pointer arithmetic
+			int * p = new int[2];
+			p[0] = 0;
+			p[1] = 1;
+			p++;
+			//p++ increments the memory by p + size(int) bytes so printing *p outputs 1
+
+			Templates
+			//a template reuses the same code to apply the same class to different data types
+			template <class T> class ShiftedList{
+			}
+
+12.1: print the last K lines of an input file using C++
+	Use a circular array in order to print the last 12 lines, with each new element replacing an old one, at the end
+	print the whole array starting from the next spot to be overridden
+
+	ex:
+		void printlast10(char* fileName){
+			const int K = 10
+			ifstream file (fileName);
+			string L[K];
+			int size = 0;
+
+			/* read file line by line and input into the circular array, use peek so that
+			an end of file line is not considered a line*/
+			while(file.peek() != EOF){
+				getline(file,L[size%K])
+				size++
+			}
+			//if the file is less than K lines then start from 0, else get the start of the first of
+			//the last 12 lines
+			int start = size > K ? (size%K) : 0;
+			//size of the array
+			int count = min(K,size);
+			//print lines in order
+			for(int i = i;i<count;i++){
+				cout <<  L[(start + i) % K] << endL;
+			}
+
+		}
+
+12.2
