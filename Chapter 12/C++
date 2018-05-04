@@ -3,11 +3,17 @@ C++ Notes
 Inheritance ex:
 	class Person{
 		...
-	}
+		void func(){
+
+		}
+	};
 	class Student: public Person{
 		public:
 			...
-	}
+			void func(){
+				...
+			}
+	};
 	int main(){
 		Student* p = new Student();
 		p->func(); //uses the function within student
@@ -29,4 +35,40 @@ Constructor ex:
 	}
 
 Virtual Functions
-	
+	class Person{
+		virtual void func(){
+			...
+		}
+	};
+
+	//if a pure virtual function is put in the parent class, it cannot be instantiated
+	//a virtual functin can be used if two classes inherent parent, but have different implementations
+	//of the same method
+
+	//A virtual deconstructor should be used so that the child class's data is also deleted, not just the parent
+	class Person{
+		virtual ~Person(){
+			...
+		}
+	};
+	class Student: public Person{
+		public:
+			~Student(){
+
+			}
+	};
+
+	//default values should be on the right side
+	Default Values ex:
+		int func(int a,int b = 3){
+			x = a
+			y = b
+			return a + b;
+		}
+
+	Operator overloading ex:
+		//allows use of operator signs on objects that normally wouldn't allow it by overriding the function
+		Bookshelf Bookshelf::operator+(Bookshelf &other){...}
+
+	Pointers and References
+		
