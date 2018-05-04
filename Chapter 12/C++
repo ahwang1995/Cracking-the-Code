@@ -188,3 +188,10 @@ Virtual Functions
 			strcpy(dest.ptr,src.ptr);
 		}
 		//shallow copy can cause runtime errors due to the creation and deletion of objects
+
+12.6 What is the significance of the keyword "volatile in C++"
+	Volatile signifys that a variable can be changed on the outside, without update to the code. For example
+	by the operating system, hardware, or thread. Because of this the compiler will reload it every time from
+	memory. Volatile variables can be used to break out of infinite loops.
+
+
