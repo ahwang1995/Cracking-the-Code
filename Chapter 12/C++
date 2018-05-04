@@ -173,3 +173,18 @@ Virtual Functions
 	stores the addresses of the function in the parent class. When the virtual function is called, the vtable is used to
 	resolve the addresses. When the derived class object is assigned to the base class pointer, vptr points to the vtable
 	of the derived class rather than the parent. This is shown in one of the above examples.
+
+12.5 What is the difference between a shallow copy and a deep copy?
+	A shallow copy copies the member values from one object to another while a deep copy also copies pointer objects
+	ex:
+		struct Test{
+			char * ptr;
+		};
+		void shallow_copy(Test & src, Test & dest){
+			dest.ptr = src.ptr;
+		}
+		void deep_copy(Test & src, Test & dest){
+			dest.ptr = (char*)malloc(strlen(src.len(srcptr))+1);
+			strcpy(dest.ptr,src.ptr);
+		}
+		//shallow copy can cause runtime errors due to the creation and deletion of objects
