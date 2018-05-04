@@ -167,4 +167,9 @@ Virtual Functions
 	STLMap
 		When the number of inputs is small an STLmap or binary tree can be used, as O(log N) time will be negligible
 
-	
+12.4 How do virtual funcions work in C++?
+	virtual functions use a vtable which stores the address of the virtual function of the class. There is also a hidden
+	vptr variable which points to the vtable of the class. If the virtual function is not ovverridden, then the vtable
+	stores the addresses of the function in the parent class. When the virtual function is called, the vtable is used to
+	resolve the addresses. When the derived class object is assigned to the base class pointer, vptr points to the vtable
+	of the derived class rather than the parent. This is shown in one of the above examples.
