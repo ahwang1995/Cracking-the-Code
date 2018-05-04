@@ -1,0 +1,32 @@
+C++ Notes
+
+Inheritance ex:
+	class Person{
+		...
+	}
+	class Student: public Person{
+		public:
+			...
+	}
+	int main(){
+		Student* p = new Student();
+		p->func(); //uses the function within student
+		delete p; //deletes allocated memory
+	}
+
+Constructor ex:
+	//for primitive types
+	Person(int a){
+		id = a;
+	}
+	//so that id is created before the object or constructor code
+	Person(int a) : id(a){
+
+	}
+	//deconstructor
+	~Person(){
+		delete obj;
+	}
+
+Virtual Functions
+	
