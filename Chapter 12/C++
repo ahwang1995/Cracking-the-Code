@@ -129,4 +129,21 @@ Virtual Functions
 
 		}
 
-12.2
+12.2 function void reverse(char* str) which reverses a null-terminated string
+	void reverse(char *str){
+		char *end = str;
+		char tmp;
+		//find the end of the string (null value)
+		if(str){
+			while(*end){
+				++end;
+			}
+			--end;
+			//uses post increment and decrement
+			while(str < end){
+				tmp = *str
+				*str++ = *end;
+				*end-- = tmp;
+			}
+		}
+	}
