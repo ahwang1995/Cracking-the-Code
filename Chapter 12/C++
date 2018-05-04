@@ -147,3 +147,24 @@ Virtual Functions
 			}
 		}
 	}
+
+12.3 Compare and contrast a hash table and a stl map.
+	Hashtables store values by calling a hash function on a key. These values are not sorted.
+	Since keys are used, an insert or lookup is done in O(1) time, assuming few collisions.
+	Collisions are commonly dealt with by using linked lists, which store all of the values mapped
+	to a particular key. An STL map inserts the pairs into a balanced binary tree, so inserts and lookups
+	are O(log N).
+
+	Hashtables
+		Hashtables are commonly implemented using an array of linked lists. There are two keys used,
+		the hashkey gets the index of the array while a more specific key matches the particular
+		element in the linked list. 
+		Try to avoid collisions with a good hash function. There will still be collisions, so the must
+		be handeled, commonly by using linked lists. There should also be a function to dynamically resize
+		the hash table depending on the ratio of elements in the table and the size. This requires transferring
+		elements into another hash table, which is expensive and should not be done too often.
+
+	STLMap
+		When the number of inputs is small an STLmap or binary tree can be used, as O(log N) time will be negligible
+
+	
