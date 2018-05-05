@@ -199,3 +199,23 @@ Virtual Functions
 
 12.8 Copy Node - A function that takes a pointer node as a data structure and returns a complete copy of the data structure.
 The Node structure contains two pointers to other Nodes.
+	//recurseive algorithm
+	Node * copy_recurseive(Node * cur, NodeMap & nodeMap){
+		if curr == NULL{
+			return NULL;
+		}
+		NodeMap::iterator i = nodeMap.find(cur);
+		if(i != nodeMap.end()){
+			//return the copy
+			return i->second;
+		}
+		Node * node = new Node();
+		nodeMap[cur] = node;
+		node->ptr1 = copy_recursive(cur->ptr1,nodeMap);
+		node->ptr2 = copy_recursive(cur->ptr2,nodeMap);
+		return node;
+	}
+	Node * copy_structure(Node * root){
+		NodeMape nodeMap;
+		return copy_recursive(root,nodeMap);
+	}
