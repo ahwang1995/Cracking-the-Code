@@ -194,4 +194,8 @@ Virtual Functions
 	by the operating system, hardware, or thread. Because of this the compiler will reload it every time from
 	memory. Volatile variables can be used to break out of infinite loops.
 
+12.7 Virtual Base Case - why does the deconstructor in the base case need to be declared a value
+	Since the deconstructor for the most derived case must be called
 
+12.8 Copy Node - A function that takes a pointer node as a data structure and returns a complete copy of the data structure.
+The Node structure contains two pointers to other Nodes.
