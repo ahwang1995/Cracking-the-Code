@@ -219,3 +219,7 @@ The Node structure contains two pointers to other Nodes.
 		NodeMape nodeMap;
 		return copy_recursive(root,nodeMap);
 	}
+
+12.9 Smart pointer - A smart pointer is a data type, usually implememnted with templates, that simulates a pointer
+and provides automatic garbage collection. The object is free when the number of references hits zero.
+This is used to avoid isueslike dangling pointers and memory leaks.
