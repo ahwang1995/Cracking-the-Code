@@ -241,3 +241,8 @@ is divisible by a power of 2
 		void* p1 = ((void**)p2)[-1];
 		free(p1);
 	}
+
+12.11 2d array malloc
+	A 2d array is treated as subsequent 1d arrays, so when the memory of one array is freed, you need to make structure
+	that the subsequent ones are freed as well
+	
