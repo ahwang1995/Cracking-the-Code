@@ -42,4 +42,14 @@ try block of a try catch finally?
 		references exist. This method is meant to be overridden since it executes right
 		before garbage collection
 
-	
+13.4 Generics vs templates - differences between templates in C++ and generics in Java
+	In Java generics are used to make the syntax look cleaner
+	In C++ static variables will not be shared if there are two different type parameters
+	C++ uses primitive types such as int while Java has to use Integer
+	Java can restrict the type parameters to be a certain type
+	Type parameters can be instantiates in C++
+	While type parameters cannot be used for static methods and variables in Java, this can be
+	done in C++
+	Instances of the same class with different type parameters are considered the same in Java
+	while they are considered different in C++
+
