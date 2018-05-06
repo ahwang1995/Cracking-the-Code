@@ -64,3 +64,6 @@ try block of a try catch finally?
 		Offers O(1) lookup and insertion, keys are ordered by their insertion ordered
 		implemented with doubly linked buckets
 
+	The order of the output is is what diferentiates thes. A linkedhashmap is usefull for outputing
+	sorted information while a treemap is used for chached info. A hashmap is usually the fastest
+	with the least overhead
