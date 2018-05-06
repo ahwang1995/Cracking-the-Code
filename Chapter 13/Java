@@ -53,3 +53,14 @@ try block of a try catch finally?
 	Instances of the same class with different type parameters are considered the same in Java
 	while they are considered different in C++
 
+13.5 Treemap, Hashmap, Linkmap
+	Each is a key->value map which has a way to iterate through the keys
+	Hashmap
+		offers O(1) lookup and insertion
+	Treemap
+		Offers O(log n) lookup and insertion, keys are ordered, uses the comparable interface
+		implemented with red black tree
+	LinkedHashmap
+		Offers O(1) lookup and insertion, keys are ordered by their insertion ordered
+		implemented with doubly linked buckets
+
