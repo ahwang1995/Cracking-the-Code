@@ -27,3 +27,19 @@ try block of a try catch finally?
 	doesnt get executed are when the virtual machine exits during the try catch or the
 	thread executing the block gets killed
 
+13.3 Final, Finally, and finalize
+	Final
+		This is used to control whether a variable, method, or class is changeable
+		When applied to a primitive, the variable value cannot chang
+		When applied to a reference, the variable cannot point to any other object on the heap
+		When applied to a method, it cannot be overridden
+		When applied to a class, a subclass cannot be made
+	Finally
+		This is used in a try catch block to make sure a segment of code is always executed
+		Even if an exception is thrown, the statement in the finally block is still executed
+	Finalize()
+		This is a method used by the garbage collector once it is determined that no more
+		references exist. This method is meant to be overridden since it executes right
+		before garbage collection
+
+	
