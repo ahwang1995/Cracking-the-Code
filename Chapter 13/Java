@@ -1,0 +1,29 @@
+Java Review
+
+Overloading is when two methods have the same name, but differ in the type of
+arguments, while overriding is when two methods share the same name as another method
+in the superclass
+
+In the collections framework, an arraylist and vector have similar functionqality, the
+difference being that a vector is synchronized when being accessed by multiple threads.
+
+A linkedlist is a good example of using an iterator
+	LinkedList<String> myLinkedList = new LinkedList<String>();
+	...
+	Iterator<String> iter = new myLinkedList.iterator();
+	while(iter.hasNext()){
+		System.out.println(iter.next());
+	}
+
+Hash map initialization
+HashMap<String,String> map = new HashMap<String,String>();
+
+13.1 Private Constructor
+	The inner classes can access the private methods of a classes
+
+13.2 Does the finally block get excecuted when a return statement is inserted in the
+try block of a try catch finally?
+	Yes, when the the try block exits, the finally block executes. The cases in which it
+	doesnt get executed are when the virtual machine exits during the try catch or the
+	thread executing the block gets killed
+
