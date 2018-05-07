@@ -76,3 +76,22 @@ try block of a try catch finally?
 	This is used for debugging purposes
 	Allows methods to be called without knowing the method in advance
 
+13.7 Lambda Expressions - A class Country has the methods getContinent() and getPopulation().
+Write a function int getPopulation(List<Country> countries,String continent) that computes
+the total population of a given continent, given a list of all countries and the name of
+a continent
+	//without lambda funciton
+	int getPopulation(List<Country> countries, String continent){
+		int sum = 0;
+		for(Country c:countries){
+			if(c.getContinent().equals(continent)){
+				sum += c.getPopulation();
+			}
+		}
+		return sum;
+	}
+	//with lambda function
+	Stream<Country> northAmerica = countries.stream().filter(country->{return country.getContinent().equals(continent);});
+	Stream <Integer> populations = northAmerica.map(c->c.getPopulation());
+	int population = populations.reduce(0,(a,b)->a+b);
+	return population
