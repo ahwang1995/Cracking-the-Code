@@ -67,3 +67,12 @@ try block of a try catch finally?
 	The order of the output is is what diferentiates thes. A linkedhashmap is usefull for outputing
 	sorted information while a treemap is used for chached info. A hashmap is usually the fastest
 	with the least overhead
+
+13.6 Object Reflection
+	A way to get reflective information about Java classes and objects
+		Get info on methods and fields  in the class at runtime
+		Create a new instance of a class
+		Get and set object fields by getting the field reference
+	This is used for debugging purposes
+	Allows methods to be called without knowing the method in advance
+
