@@ -95,3 +95,22 @@ a continent
 	Stream <Integer> populations = northAmerica.map(c->c.getPopulation());
 	int population = populations.reduce(0,(a,b)->a+b);
 	return population
+
+13.8 Lambda Randon - using lambda expressions, write a function List<Integer> getRandomSubset(List<Integer> list)
+that returns a random subset of arbitrary size. All subsets, including the empty set should be equally
+likely to be chosen
+//without lambda expressions
+	List<Integer> getRandomSubset(List<Integer> list){
+		Random random = new Random();
+		for(int item:list){
+			if(random.nextBoolean()){
+				subset.add(item);
+			}
+		}
+		return subset;
+	}
+//with lambda
+	List<Integer> getRandomSubset(List<Integer> list){
+		Random random = new Random();
+		List<Integer> subset = list.stream().filter(k->{return random.nextBoolean();}).collect(Collectors.toList());
+		return subset;
